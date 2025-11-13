@@ -14,9 +14,27 @@ public class AdventOfcodeStageOrangeApplication {
     public static void main(String[] args) {
         SpringApplication.run(AdventOfcodeStageOrangeApplication.class, args);
 
-        Rapport rapport = new Rapport();
-        rapport.saisir();
-        rapport.affiche();
+        System.out.println("Combien de rapport voulez vous saisir ?");
+        Scanner saisi = new Scanner(System.in);
+        int n = saisi.nextInt();
+        List<Rapport> rapports = new ArrayList<>();
+        System.out.println("Saiser le rapport (les niveaux seront séparé par des espaces): ");
+        for(int i = 0; i < n; i++) {
+            System.out.print("Rapport " + (i+1) + ": ");
+            rapports.add(new Rapport());
+        }
+
+        for(Rapport rapport : rapports) {
+            rapport.affiche();
+            if(rapport.est_sans_danger()) {
+                System.out.print(" -> Sans danger");
+            }
+            else {
+                System.out.print(" -> En danger");
+            }
+            System.out.println();
+        }
+
     }
 
 }
